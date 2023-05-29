@@ -10,7 +10,7 @@ using System.Data;
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-   // [Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -110,6 +110,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
             return Json(new { data = objProductList });
         }
+       
         [HttpDelete]
         public IActionResult Delete(int? id)
         {
